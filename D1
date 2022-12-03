@@ -1,0 +1,9 @@
+Copy the input file to column A beginning in cell 3
+In column B, enter this formula and drag it to the bottom:
+  =IF(A3="",SUM(A3:INDEX($A3:A$2002,MATCH(TRUE,($A4:A$2002=""),0))),"") 
+Use:
+  =max(B3:B)
+To find the largest.
+Use:
+  =sum(LARGE(B1:B,1),LARGE(B1:B,2),LARGE(B1:B,3))
+To find the sum of the largest 3.
