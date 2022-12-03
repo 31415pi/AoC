@@ -1,0 +1,77 @@
+I did part of this in just the sheets cells, then went to google app scripts...
+
+Paste input data to B3
+Use:
+  =left(A3,len(A3)/2)
+In cell C3 and drag to bottom.
+In cell D3 use:
+  =right(A3,len(A3)/2)
+and drag to bottom.
+
+PT1:
+function myFunction() {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var row = 3;
+  var col = 3; 
+  var qq = 0;
+  let result = "QQ";
+  let asciinum = 0;
+  let tally = 0;
+
+  for (var tt = 0; tt < 300; tt++)
+  {
+    let data = sheet.getRange(row+tt, col).getValue();
+    let data1 = sheet.getRange(row+tt, col+1).getValue();
+    while(!data1.includes(data[qq]))
+    {
+      qq++;
+    }
+
+    asciinum = (data1.match(data[qq])).toString().charCodeAt(0);
+    
+    if( (96 < asciinum) && (asciinum < 123 ) )
+    {
+      tally = tally + (asciinum-96);
+    }
+    else
+    {
+      tally += (asciinum-38);
+    }
+    qq = 0;
+  }
+  sheet.getRange(row,8).setValue(tally)
+}
+
+
+PT2:
+function myFunction1() {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var row = 3;
+  var col = 1; 
+  var qq = 0;
+  let asciinum = 0;
+  let tally = 0;
+
+  for (var tt = 0; tt < 300; tt+=3)
+  {
+    let data = sheet.getRange(row+tt, col).getValue();
+    let data1 = sheet.getRange(row+tt+1, col).getValue();
+    let data2 = sheet.getRange(row+tt+2, col).getValue();
+
+    while(! (data1.includes(data[qq]) && data2.includes(data[qq])) )
+    {
+      qq++;
+    }
+    asciinum = data[qq].toString().charCodeAt(0);
+    if( (96 < asciinum) && (asciinum < 123 ) )
+    {
+      tally = tally + (asciinum-96);
+    }
+    else
+    {
+      tally += (asciinum-38);
+    }
+    qq = 0;
+  }
+sheet.getRange(row,9).setValue(tally);
+}
