@@ -1,0 +1,28 @@
+Copy input file to column A beginning in cell 3
+Create some named ranges off to the side
+  F   G   I   J
+  A X	4		A X	3
+  A Y	8		A Y	4
+  A Z	3		A Z	8
+  B X	1		B X	1
+  B Y	5		B Y	5
+  B Z	9		B Z	9
+  C X	7		C X	2
+  C Y	2		C Y	6
+  C Z	6		C Z	7
+I put that set in F10:J18
+
+PT1:
+Put this formula into B3:
+  =LOOKUP(A3,$F$10:$G$18,$G$10:$G$18)
+Pull it to the end of the list.
+Use:
+  sum(B3:b)
+To get your total.
+
+PT2:
+Put this formula into D3:
+  =LOOKUP(A3,$I$10:$J$18,$J$10:$J$18)
+Use: 
+  sum(D:D3)
+To get your updated total.
