@@ -7,7 +7,7 @@
 from functools import partial
 total = 0
 //sum = 0
-with open("data.txt", 'r') as f:
+with open("D1_data.txt", 'r') as f:
     for floor in iter(partial(f.read, 1), ''):
 //        sum +=1
         if (floor == "("):
